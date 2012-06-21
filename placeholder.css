@@ -1,0 +1,14 @@
+.placeholder {
+    position: relative;
+}
+
+.placeholder label {
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    color: #999;
+    position: absolute;
+    top: 0;
+    cursor: text;
+    margin-left: 5px;
+}
