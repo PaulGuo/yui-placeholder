@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>YUI - Placeholder</title>
+<link rel="stylesheet" href="http://a.tbcdn.cn/??p/global/1.0/global-min.css,apps/et/common/css/trip-reset-min.css,s/yui/3.5.1/build/cssgrids/grids.css,apps/et/common/css/trip-global-min.css"/>
+<script src="http://a.tbcdn.cn/??s/kissy/1.1.6/seed-min.js,p/global/1.0/global-min.js,s/kissy/1.1.6/packages/core-min.js,s/yui/3.5.1/build/yui/yui-min.js"></script>
+<script src="http://a.tbcdn.cn/??apps/et/common/js/trip-config-3.5.1-min.js"></script>
+<script src="placeholder.js"></script>
+</head>
+<body>
+
+<div id="content">
+    <pre class="s-section">
+功能：placeholder
+描述：支持大多数浏览器
+源码：<a href="placeholder.js">placeholder.js</a></pre>
+
+    <h3 class="s-title">使用实例</h3>
+    <div class="s-section">
+        <div class="s-demo">
+            <style>
+                .order-form {
+                    padding-top: 25px;
+                    padding-bottom: 10px;
+                }
+
+                .order-form li {
+                    margin-bottom: 18px;
+                    padding-left: 110px;
+                }
+
+                .order-form .field {
+                    float: left;
+                    margin-left: -110px;
+                    text-align: right;
+                    width: 100px;
+                    height: 27px;
+                    line-height: 27px;
+                }
+
+                .order-form .field span {
+                    color: #f60;
+                    vertical-align: middle;
+                }
+
+                .order-form .text {
+                    border: 1px solid #ccc;
+                    height: 25px;
+                    line-height: 25px;
+                    padding: 0 5px;
+                    width: 220px;
+                }
+
+                .order-form .date {
+                    width: 150px;
+                    margin-right: 3px;
+                    cursor: text;
+                }
+
+                .order-form select {
+                    border: 1px solid #ccc;
+                    padding: 3px;
+                }
+
+                .order-form textarea {
+                    border: 1px solid #ccc;
+                    padding: 5px;
+                    width: 220px;
+                    min-width: 220px;
+                    max-width: 588px;
+                    height: 60px;
+                }
+
+                .order-form .text:focus, .order-form textarea:focus {
+                    background: #fafafa;
+                    box-shadow: 0 0 10px #ddd;
+                }
+
+                .order-form button {
+                    height: 35px;
+                    width: 150px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+                .placeholder {
+                    position: relative;
+                }
+
+                .placeholder label {
+                    display: inline-block;
+                    height: 27px;
+                    line-height: 27px;
+                    color: #999;
+                    position: absolute;
+                    top: 0;
+                    cursor: text;
+                    margin-left: 5px;
+                }
+            </style>
+            <ul class="order-form" id="order-form">
+                <li class="clearfix">
+                    <label class="field" for="name">姓名：<span>*</span></label>
+                    <input class="text J_Placeholder" type="text" name="name" id="name" maxlength="30" placeholder="这里必须要填写姓名">
+                </li>
+                <li class="clearfix">
+                    <label class="field" for="idcard">身份证：<span>*</span></label>
+                    <input class="text J_Placeholder" type="text" name="idcard" id="idcard" maxlength="18" placeholder="这里必须要填写身份证">
+                </li>
+                <li class="clearfix">
+                    <label class="field" for="mobile">手机：<span>*</span></label>
+                    <input class="text J_Placeholder" type="text" name="mobile" id="mobile" maxlength="11" placeholder="这里必须要填写手机">
+                </li>
+                <li class="clearfix">
+                    <label class="field">留言：<span style="visibility:hidden;">*</span></label>
+                    <textarea name="guestbook" placeholder="选填，可以告诉卖家您的特殊要求，可以告诉卖家您的特殊要求" class="J_Placeholder"></textarea>
+                </li>
+            </ul>
+
+        <script>
+            YTRIP.use('node', 'placeholder', function(Y) {
+                Y.all('#order-form .J_Placeholder').each(function(el) {
+                   Y.Placeholder(el);
+                });
+            });
+        </script>
+    </div>
+    <a class="s-view-code" href="#">显示源码</a><!--点击该链接自动帮你显示s=demo里的内容，如不需要，去除链接即可-->
+</div>
+
+<h3 class="s-title">API</h3>
+<div class="s-section">
+    <h4 class="s-api-title">方法</h4>
+    <div class="s-api-method">KISSY.util.placeholder ( el )</div>
+    <h4 class="s-api-title">参数</h4>
+    <div class="s-api-params">
+        <ul class="s-list">
+            <li>{String | HtmlElement} 选择器或者单个HtmlElement对象</li>
+            </li>
+        </ul>
+    </div>
+    <h4 class="s-api-title">返回</h4>
+    <div class="s-api-return">KISSY.util.placeholder对象</div>
+</div>
+
+</div>
+
+</body>
+</html>
+
