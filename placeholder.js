@@ -25,13 +25,13 @@ YUI.add('placeholder', function(Y) {
             wrap:true
         };
 
-        if(self instanceof placeholder) {
+        if(self instanceof Placeholder) {
             var config = Y.merge(defaultCfg, cfg);
             self._init(el, config);
             return;
         }
 
-        return new placeholder(el, cfg);
+        return new Placeholder(el, cfg);
     };
 
     Y.extend(Placeholder, Y.Base, {
@@ -50,7 +50,7 @@ YUI.add('placeholder', function(Y) {
             if(!placeHolderTip) return;
 
             var _decorate = function() {
-                var str=Y.substitute(TIP_TMPL, {
+                var str=Y.Lang.sub(TIP_TMPL, {
                     tip: placeHolderTip
                 });
                 var triggerLabel = self.triggerLabel = Y.Node.create(str);
@@ -65,26 +65,28 @@ YUI.add('placeholder', function(Y) {
                 }
                
                 var targetBox = Y.Node.create(WRAP_TMPL);
-                targetBox.appendTo(target.ancestor()).append(target);
+                target.each(function(_target) {
+                    targetBox.appendTo(_target.ancestor()).append(_target);
 
-                triggerLabel.insertBefore(target);
+                    _target.insert(triggerLabel, 'before');
 
-                Y.later(function() {
-                    if(!target.get('value')) {
-                        triggerLabel.show();
-                    }
-                },100);
+                    Y.later(100, this, function() {
+                        if(!_target.get('value')) {
+                            triggerLabel.show();
+                        }
+                    });
+
+                    _target.on('focus', function(ev) {
+                        self.triggerLabel.hide();
+                    });
+
+                    _target.on('blur', function(ev) {
+                        if(!_target.get('value')) {
+                            self.triggerLabel.show();
+                        }
+                    });
+                });
             };
-
-            target.on('focus', function(ev) {
-                self.triggerLabel.hide();
-            });
-
-            target.on('blur', function(ev) {
-                if(!target.get('value')) {
-                    self.triggerLabel.show();
-                }
-            });
 
             _decorate();
 
