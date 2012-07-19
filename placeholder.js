@@ -55,17 +55,17 @@ YUI.add('placeholder', function(Y) {
                 });
                 var triggerLabel = self.triggerLabel = Y.Node.create(str);
                 triggerLabel.setStyle('width',target.getStyle('width'));
-
-                if(target.getAttribute('id')) {
-                    triggerLabel.getAttribute('for', target.getAttribute('id'));
-                } else {
-                    triggerLabel.on('click', function() {
-                        target[0].focus();
-                    });
-                }
                
                 var targetBox = Y.Node.create(WRAP_TMPL);
                 target.each(function(_target) {
+                    if(_target.getAttribute('id')) {
+                        triggerLabel.setAttribute('for', _target.getAttribute('id'));
+                    } else {
+                        triggerLabel.on('click', function() {
+                            _target.focus();
+                        });
+                    }
+
                     targetBox.appendTo(_target.ancestor()).append(_target);
 
                     _target.insert(triggerLabel, 'before');
